@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Chi's Art Store`,
@@ -31,7 +33,7 @@ module.exports = {
       resolve: `gatsby-source-shopify`,
       options: {
         shopName: `chis-art-store`,
-        accessToken: `67547d9dc6fb0a0f36bc488521ec3f23`
+        accessToken: process.env.PLUGIN_API,
       }
     },
   ],
