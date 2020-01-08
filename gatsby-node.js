@@ -1,8 +1,8 @@
 const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  return graphql(`
+  const { createPage } = actions;
+  const products = graphql(`
     {
       allShopifyProduct {
         edges {
@@ -24,5 +24,31 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
-  })
+  });
+
+  const blogs = graphql(`
+    {
+      allShopifyArticle {
+        edges {
+          node {
+            id
+            title
+          }
+        }
+      }
+    }
+  `).then(result => {
+    const template =  path.resolve(`./src/templates/Blog/index.js`);
+    result.data.allShopifyArticle.edges.forEach(({ node }) => {
+      createPage({
+        path: `/blog/${node.title}/`,
+        component: template,
+        context: {
+          id: node.id
+        },
+      })
+    })
+  }).catch(err => console.log(err))
+
+  return Promise.all([products, blogs])
 }
