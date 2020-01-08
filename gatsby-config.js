@@ -1,10 +1,14 @@
-require('dotenv').config()
+const path = require('path')
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
 module.exports = {
   siteMetadata: {
     title: `Chi's Art Store`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: 'abstract art store',
+    author: `@notZinedine`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -17,6 +21,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -32,9 +37,24 @@ module.exports = {
     {
       resolve: `gatsby-source-shopify`,
       options: {
-        shopName: `chis-art-store`,
-        accessToken: process.env.PLUGIN_API,
-      }
+        shopName: process.env.SHOP_NAME,
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+        verbose: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        '~': path.join(__dirname, 'src/'),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-134421805-1",
+        anonymize: true,
+        respectDNT: true,
+      },
     },
   ],
 }
