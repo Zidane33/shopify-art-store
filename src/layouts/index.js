@@ -14,6 +14,16 @@ const Wrapper = styled.div`
   padding: 0px 1.0875rem 1.45rem;
 `
 
+const Footer = styled.footer`
+  width: 100%;
+  background-color: #000639;
+  color: #F4F5FA;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+`
+
 const Layout = ({ children }) => {
   return (
     <ContextProvider>
@@ -33,12 +43,10 @@ const Layout = ({ children }) => {
             <Navigation siteTitle={data.site.siteMetadata.title} />
             <Wrapper>
               {children}
-              <footer>
-                © {new Date().getFullYear()}, Built with
-                {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
-              </footer>
             </Wrapper>
+            <Footer>
+              © {new Date().getFullYear()}
+            </Footer>
           </>
         )}
       />

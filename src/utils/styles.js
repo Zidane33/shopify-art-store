@@ -16,6 +16,8 @@ export const GlobalStyle = props => (
     styles={css`
       body {
         margin: 0;
+        position: relative;
+        min-height: 100vh;
       }
       html {
         font-family: sans-serif;
