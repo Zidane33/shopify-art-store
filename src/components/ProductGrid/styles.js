@@ -21,15 +21,17 @@ export const Product = styled.div`
 
 export const Title = styled.span`
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-align: center;
+  color: #000639;
 `
 
 export const PriceTag = styled.span`
-  font-weight: 300;
+  font-weight: 1000;
   font-size: 1rem;
   text-align: center;
   margin-top: 15px;
+  color: #000639;
 
   :before {
     content: '- '

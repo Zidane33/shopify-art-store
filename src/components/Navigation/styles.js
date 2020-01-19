@@ -20,7 +20,7 @@ export const Container = styled.div`
 export const MenuLink = styled(Link)`
   color: #F4F5FA;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
 
   @media (max-width: ${breakpoints.s}px){

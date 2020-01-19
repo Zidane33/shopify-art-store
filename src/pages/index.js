@@ -10,7 +10,6 @@ const IndexPage = () => (
     <h1>Hi people</h1>
     <p>Welcome To Chi's Art Store.</p>
     <ProductGrid />
-    <Link to="/page-2/">Who Is Chi?</Link>
   </>
 )
 
